@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dem-downloader"
+version = "0.1.0"
+description = "Download and reproject DEM tiles with progress bars and OOM prevention"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    {name = "Joel Fiddes"},
+]
+dependencies = [
+    "dem-stitcher",
+    "rasterio",
+    "numpy",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "flake8",
+]
+
+[project.scripts]
+dem-downloader = "dem_downloader.core:main"
+
+[project.urls]
+Repository = "https://github.com/joelfiddes/dem-downloader"
