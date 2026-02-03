@@ -4,6 +4,23 @@ Download and reproject DEM tiles to a target CRS and resolution, with progress b
 
 Built on [dem-stitcher](https://github.com/ACCESS-Cloud-Based-InSAR/dem-stitcher) for tile fetching and [rasterio](https://rasterio.readthedocs.io/) for reprojection.
 
+## Quick start
+
+```bash
+pip install git+https://github.com/joelfiddes/dem-downloader.git
+```
+
+**CLI:**
+```bash
+dem-downloader --bbox 76.5 42.0 77.5 43.0 --epsg 32643 -r 500 -o dem.tif
+```
+
+**Python:**
+```python
+from dem_downloader import download_dem
+download_dem(bbox=[76.5, 42.0, 77.5, 43.0], output_path="dem.tif", epsg=32643, resolution=500)
+```
+
 ## Features
 
 - **Auto source selection**: Switches from `glo_30` (30m) to `glo_90` (90m) when target resolution >= 100m, avoiding unnecessary memory usage
