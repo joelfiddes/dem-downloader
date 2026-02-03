@@ -16,33 +16,44 @@ Built on [dem-stitcher](https://github.com/ACCESS-Cloud-Based-InSAR/dem-stitcher
 ## Installation
 
 ```bash
+# From PyPI dependencies (if not using the package)
 pip install dem-stitcher rasterio tqdm
+
+# From GitHub (recommended)
+pip install git+https://github.com/joelfiddes/dem-downloader.git
+
+# From local clone (for development)
+git clone https://github.com/joelfiddes/dem-downloader.git
+cd dem-downloader
+pip install -e .
 ```
 
 ## Usage
 
 ### Command line
 
+After installation, the `dem-downloader` command is available:
+
 ```bash
 # Download with EPSG code
-python dem_downloader.py --bbox 76.5 42.0 77.5 43.0 --epsg 32643 -r 500 -o dem.tif
+dem-downloader --bbox 76.5 42.0 77.5 43.0 --epsg 32643 -r 500 -o dem.tif
 
 # Download with CRS preset
-python dem_downloader.py --bbox 46 40 88 56 --crs kaz_albers -r 500 -o kaz_dem.tif
+dem-downloader --bbox 46 40 88 56 --crs kaz_albers -r 500 -o kaz_dem.tif
 
 # Download with custom proj4
-python dem_downloader.py --bbox 68 50 78 55 \
+dem-downloader --bbox 68 50 78 55 \
   --crs "+proj=aea +lat_1=45 +lat_2=51 +lat_0=48 +lon_0=68 +ellps=WGS84 +units=m" \
   -o dem.tif
 
 # Keep in WGS84 at native resolution
-python dem_downloader.py --bbox 76.5 42.0 77.5 43.0 -o dem_wgs84.tif
+dem-downloader --bbox 76.5 42.0 77.5 43.0 -o dem_wgs84.tif
 
 # List available DEM sources
-python dem_downloader.py --list-sources
+dem-downloader --list-sources
 
 # List CRS presets
-python dem_downloader.py --list-presets
+dem-downloader --list-presets
 ```
 
 ### As a library
